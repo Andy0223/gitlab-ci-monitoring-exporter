@@ -1,0 +1,41 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:4.0.0
+    ports:
+      - "9090:9090"
+    networks:
+      - my_network
+
+  push-gateway:
+    image: prom/pushgateway
+    ports:
+      - "9091:9091"
+    networks:
+      - my_network
+  
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+  
+  gitlab-exporter:
+    build:
+      context: .
+    image: andy24680/gitlab-ci-exporter:1.0.0  # 指定你想要的映像名稱
+    ports:
+      - "8000:8000"
+    networks:
+      - my_network
+    env_file:
+      - .env
+    volumes:
+      - gitlab_exporter_data:/app/cache
+
+networks:
+  my_network:
+
+volumes:
+  gitlab_exporter_data:

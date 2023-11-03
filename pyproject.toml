@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "gitlab-ci-monitoring-exporter"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "gitlab-ci-monitoring-exporter"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+prometheus-client = "^0.17.1"
+python-dotenv = "^1.0.0"
+flask = "^2.3.2"
+asyncio = "^3.4.3"
+aiohttp = "^3.8.5"
+requests = "^2.31.0"
+retry = "^0.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
